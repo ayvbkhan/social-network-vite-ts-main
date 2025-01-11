@@ -1,9 +1,27 @@
-import { InputHTMLAttributes } from "react"
+import { InputHTMLAttributes, forwardRef } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> { }
-
-export const Input = ({ type, placeholder }: InputProps) => {
-  return (
-      <input type={type} placeholder={ placeholder } />
-  )
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  errorMessage: string | undefined,
+  isError: boolean
 }
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, placeholder, errorMessage, isError, ...props }, ref) => {
+    return (
+      <div>
+        <input
+          type={type}
+          placeholder={placeholder}
+          ref={ref}
+          {...props}
+
+        />
+        {isError && (
+          <p style={{ color: "red", marginBottom: "4px" }}>
+            {errorMessage}
+          </p>
+        )}
+      </div>
+    );
+  }
+);

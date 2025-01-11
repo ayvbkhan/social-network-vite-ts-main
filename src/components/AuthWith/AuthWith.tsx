@@ -1,9 +1,15 @@
+interface AuthWithProps {
+    text: string,
+    href: string,
+    login: string
+}
 
-export const AuthWith = () => {
+
+export const AuthWith = ({ text, login, href }: AuthWithProps) => {
   return (
       <div className="registration">
           <span>
-              У вас нет аккаунта? <a href="#">Зарегистрироваться</a>
+              {text}<a href={href}> {login}</a>
           </span>
           <p>Войти с помощью</p>
           <div className="icons-wrapper">
