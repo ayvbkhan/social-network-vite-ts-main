@@ -31,7 +31,7 @@ export const LoginPage = () => {
 
   return (
     <div className="LoginPage">
-      <Heading text="Авторизация" level={1} />
+      <Heading text="Авторизация" type="h1" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="usermail"
